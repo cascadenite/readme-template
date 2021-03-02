@@ -1,11 +1,22 @@
-# Product Name
-> Short blurb about what your product does.
+# Hazard Finder
+> Provides a Django application that provides 2 API endpoints to predict/train the model:
+1. Predict endpoint: Given an audio transcription, return a list of potential hazard IDs 
+Request body:
+- “transcript”: <TextField>
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+Response body:
+- “hazards”: <Integer[]>
+- “prediction_id”: <Integer>
 
-One to two paragraph statement about your product and what it does.
+2. Update endpoint: Given a “prediction_id”, users can feed back actual hazards for a
+transcript which should be used to improve prediction accuracy in the future
+Request body:
+- “prediction_id”: <Integer>
+- “hazards”: <Integer[]>
+Response body: Just confirms that it is done
+
+Uses  SQLite
+
 
 ![](header.png)
 
